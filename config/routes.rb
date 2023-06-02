@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: 'site#index'
   
+  post '/customers', to: 'customers#create'
+
   get '/not_found', to: 'site#not_found'
 
   match '*path', to: 'site#not_found', via: :all
