@@ -6,6 +6,8 @@ require 'dot_env'
 class CloudinaryService
   include Singleton
 
+  current_environment = DotEnv.get_environment
+
   def initialize
 
     Cloudinary.config do |config|
