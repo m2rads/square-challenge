@@ -8,12 +8,9 @@ development:
   <<: *default
   database: ror_development
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: ror_test
+  database: ror_development # Use the same database as development
 
 production:
   <<: *default
