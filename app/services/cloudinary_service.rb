@@ -2,6 +2,7 @@ require 'cloudinary'
 require 'cloudinary/uploader'
 require 'cloudinary/utils'
 require 'dot_env'
+require 'singleton'
 
 class CloudinaryService
   include Singleton
@@ -9,7 +10,6 @@ class CloudinaryService
   current_environment = DotEnv.get_environment
 
   def initialize
-
     Cloudinary.config do |config|
       config.cloud_name = ENV['CLOUDINARY_CLOUD_NAME']
       config.api_key = ENV['CLOUDINARY_API_KEY']
