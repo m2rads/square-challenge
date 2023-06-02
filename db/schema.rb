@@ -27,15 +27,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_02_191036) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.string "question_text", limit: 140
-    t.text "context", default: ""
-    t.text "answer"
-    t.integer "ask_count", default: 1
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "retailers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
