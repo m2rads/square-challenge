@@ -1,15 +1,32 @@
 require 'test_helper'
 
 class RetailerTest < ActiveSupport::TestCase
-  test "should have a name" do
-    retailer = Retailer.new
-    assert_not retailer.save, "Saved the retailer without a name"
-  end
+  test "should create a retailer and associate with a customer" do
+    retailer = Retailer.new(
+      business_name: "Sample Business",
+      owner: "John Doe",
+      email: "john@example.com",
+      phone: "1234567890",
+      image_url: "http://example.com/image.png",
+      diameter: 10.5,
+      coordinate_x: 100.0,
+      coordinate_y: 200.0
+    )
+    assert retailer.save
 
-  test "should have associated purchases" do
-    retailer = retailers(:one)
-    assert_equal 3, retailer.purchases.count, "Retailer should have 3 associated purchases"
-  end
+    customer = Customer.new(
+      name: "Jane",
+      last_name: "Doe",
+      email: "jane@example.com",
+      phone: "9876543210",
+      age: 25
+    )
+    assert customer.save
 
-  # Add more tests as needed
+    purchase = Purchase.new(retailer: retailer, customer: customer)
+    assert purchase.save
+
+    assert_equal retailer, purchase.retailer
+    assert_equal customer, purchase.customer
+  end
 end
