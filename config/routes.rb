@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: 'site#index'
 
+  get 'square/link_account', to: 'square#link_account', as: 'square_link_account'
+  get 'square/callback', to: 'square#callback', as: 'square_callback'
+
   resources :retailers
   
   resources :customers, except: [:new, :edit] do
