@@ -44,7 +44,7 @@ class CustomersController < ApplicationController
             }
           }
         end
-      
+        
         render json: { associated_retailers: retailers_data }
     end
   
