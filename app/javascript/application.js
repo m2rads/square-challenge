@@ -2,11 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import FrontPage from "./components/FrontPage";
+import Dashboard from "./components/components/Dashboard";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <FrontPage />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ]);
 

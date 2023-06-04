@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: 'site#index'
 
+  match 'dashboard', to: 'site#index', via: :all
+
   get 'square/link_account', to: 'square#link_account', as: 'square_link_account'
   get 'square/callback', to: 'square#callback', as: 'square_callback'
   get '/square/authorization_url', to: 'square#authorization_url'
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
     get 'associated_retailers', on: :member
   end
 
-  post '/customers', to: 'customers#create'
+  # post '/customers', to: 'customers#create'
 
   get '/not_found', to: 'site#not_found'
 

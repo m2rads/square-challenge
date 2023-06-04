@@ -23,7 +23,7 @@ class SquareController < ApplicationController
         current_retailer.update(square_access_token: ENV['SQUARE-ACCESS-TOKEN'])
 
         flash[:success] = "Square account linked successfully!"
-        redirect_to retailer_dashboard_path # or any other desired page
+        redirect_to '/dashboard' # or any other desired page
       else
         flash[:error] = "Failed to link Square account. Please try again."
         redirect_to retailer_signup_path # or any other desired page
