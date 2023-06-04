@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   resources :retailers
   
+  resources :customers, except: [:new, :edit] do
+    get 'associated_retailers', on: :member
+  end
+
   post '/customers', to: 'customers#create'
 
   get '/not_found', to: 'site#not_found'

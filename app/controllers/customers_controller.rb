@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-    before_action :set_customer, only: [:show, :update, :destroy]
+    before_action :set_customer, only: [:show, :update, :destroy, :associated_retailers]
   
     def index
       @customers = Customer.all
@@ -32,6 +32,21 @@ class CustomersController < ApplicationController
       @customer.destroy
       render json: { note: "Customer destroyed successfully" }
     end
+
+    def associated_retailers
+        retailers = @customer.retailers
+        retailers_data = retailers.map do |retailer|
+          {
+            retailer.id.to_s => {
+              url: retailer.image_url,
+              coordinates: [retailer.coordinate_x, retailer.coordinate_y],
+              diameter: retailer.diameter
+            }
+          }
+        end
+      
+        render json: { associated_retailers: retailers_data }
+    end
   
     private
   
@@ -43,19 +58,5 @@ class CustomersController < ApplicationController
       params.require(:customer).permit(:name, :last_name, :email, :phone, :age)
     end
 
-    def associated_retailers
-        retailers = @customer.retailers
-        retailers_data = retailers.map do |retailer|
-          {
-            id: retailer.id,
-            url: retailer.image_url,
-            coordinates: [retailer.coordinate_x, retailer.coordinate_y],
-            diameter: retailer.diameter
-          }
-        end
-    
-        render json: { associated_retailers: retailers_data }
-    end
-    
   end
   
