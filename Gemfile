@@ -84,4 +84,4 @@ gem "resemble", "~> 1.2"
 
 gem 'singleton', '~> 0.1.1'
 
-gem 'square', '~> 0.0.4'
+gem 'square.rb', '~> 28.0.0.20230517'
