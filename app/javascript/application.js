@@ -1,14 +1,17 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import App from "./components/App";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import FrontPage from "./components/FrontPage";
 
-document.addEventListener("DOMContentLoaded", function () {
-  const node = document.getElementById("book_question");
-  if (!node) {
-    console.error('Element with ID "book_question" not found');
-    return;
-  }
-  const data = JSON.parse(node.getAttribute("data"));
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <FrontPage />,
+  },
+]);
 
-  ReactDOM.render(<App data={data} />, document.getElementById("root"));
-});
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
