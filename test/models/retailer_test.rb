@@ -12,7 +12,19 @@ class RetailerTest < ActiveSupport::TestCase
       coordinate_x: 100.0,
       coordinate_y: 200.0
     )
+
+    retailer2 = Retailer.new(
+      business_name: "Sample Business",
+      owner: "John Doe2",
+      email: "john@example.com",
+      phone: "1234567890",
+      image_url: "http://example.com/image.png",
+      diameter: 10.5,
+      coordinate_x: 100.0,
+      coordinate_y: 200.0
+    )
     assert retailer.save
+    assert retailer2.save
 
     customer = Customer.new(
       name: "Jane",
@@ -24,7 +36,15 @@ class RetailerTest < ActiveSupport::TestCase
     assert customer.save
 
     purchase = Purchase.new(retailer: retailer, customer: customer)
+    purchase2 = Purchase.new(retailer: retailer2, customer: customer)
     assert purchase.save
+    assert purchase2.save
+
+    retailers = customer.retailers
+
+    retailers.each do |retailer|
+      puts retailer.owner 
+    end
 
     assert_equal retailer, purchase.retailer
     assert_equal customer, purchase.customer
