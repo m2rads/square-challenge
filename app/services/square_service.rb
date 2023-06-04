@@ -1,3 +1,4 @@
+require "square"
 require 'dot_env'
 
 module SquareService

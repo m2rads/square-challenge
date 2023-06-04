@@ -1,5 +1,6 @@
-# app/controllers/square_controller.rb
 class SquareController < ApplicationController
+  include SquareService 
+
     def link_account
       # Redirect the retailer to Square's OAuth authorization URL
       redirect_to square_authorization_url
@@ -25,7 +26,7 @@ class SquareController < ApplicationController
   
     private
   
-    def square_authorization_url
+    def authorization_url
       client = Square::OAuth::Client.new
       client.authorization_url(
         client_id: Rails.application.config.square.client_id,
