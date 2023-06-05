@@ -7,20 +7,22 @@ Rails.application.routes.draw do
   # root "articles#index"
   # root to: 'site#index'
 
-  get 'auth/:provider/callback', to: 'sessions#create'
-  root to: 'sessions#new'
-
-
-  resources :retailers
+  # get 'auth/:provider/callback', to: 'sessions#create'
+  root to: 'site#index'
   
-  resources :customers, except: [:new, :edit] do
-    get 'associated_retailers', on: :member
-  end
+  devise_for :users, controllers: {omniauth_callbacks: "callback"}
 
-  # post '/customers', to: 'customers#create'
 
-  get '/not_found', to: 'site#not_found'
+  # resources :retailers
+  
+  # resources :customers, except: [:new, :edit] do
+  #   get 'associated_retailers', on: :member
+  # end
 
-  match '*path', to: 'site#not_found', via: :all
+  # # post '/customers', to: 'customers#create'
+
+  # get '/not_found', to: 'site#not_found'
+
+  # match '*path', to: 'site#not_found', via: :all
 
 end
