@@ -4,10 +4,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root to: 'site#index'
+  # root to: 'site#index'
 
   get 'auth/:provider/callback', to: 'sessions#create'
-  get '/login', to: 'sessions#new'
+  root to: 'sessions#new'
 
 
   resources :retailers
