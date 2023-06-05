@@ -8,10 +8,6 @@ Rails.application.routes.draw do
 
   match 'dashboard', to: 'site#index', via: :all
 
-  get 'square/link_account', to: 'square#link_account', as: 'square_link_account'
-  get 'square/callback', to: 'square#callback', as: 'square_callback'
-  get '/square/authorization_url', to: 'square#authorization_url'
-
   resources :retailers
   
   resources :customers, except: [:new, :edit] do
