@@ -88,4 +88,6 @@ gem 'omniauth'
 
 gem "omniauth-rails_csrf_protection"
 
+gem 'omniauth-square-oauth2', '~> 0.2.1'
+
 gem 'devise'
