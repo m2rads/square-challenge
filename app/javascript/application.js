@@ -1,22 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import FrontPage from "./components/FrontPage";
-import Dashboard from "./components/components/Dashboard";
-
-const router = createBrowserRouter([
-  {
-    path: "/login",
-    element: <FrontPage />,
-  },
-  {
-    path: "/",
-    element: <Dashboard />,
-  },
-]);
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+import "@hotwired/turbo-rails"
+import "controllers"

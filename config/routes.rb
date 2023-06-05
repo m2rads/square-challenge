@@ -6,10 +6,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: 'site#index'
 
-  match 'dashboard', to: 'site#index', via: :all
-  match 'login', to: 'site#index', via: :all
-
   get 'auth/:provider/callback', to: 'sessions#create'
+  get '/login', to: 'sessions#new'
+
 
   resources :retailers
   

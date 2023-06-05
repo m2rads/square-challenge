@@ -5,8 +5,8 @@ class SessionsController < ApplicationController
     
     def create
         user_info = request.env['omniauth.auth']
-        # raise user_info
-        render json: { user_info: user_info }
+        raise user_info
+        # render json: { user_info: user_info }
     end
 end
   
