@@ -87,3 +87,5 @@ gem 'singleton', '~> 0.1.1'
 gem 'omniauth'
 
 gem "omniauth-rails_csrf_protection"
+
+gem 'omniauth-square-oauth2', '~> 0.2.1'
