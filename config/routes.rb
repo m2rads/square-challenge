@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   match 'dashboard', to: 'site#index', via: :all
 
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get '/login', to: 'sessions#new'
+
   resources :retailers
   
   resources :customers, except: [:new, :edit] do
