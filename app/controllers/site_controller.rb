@@ -9,4 +9,5 @@ class SiteController < ApplicationController
     # Render a JSON response with the necessary data for your React component
     # render json: { retail: @retail }
   end
+
 end

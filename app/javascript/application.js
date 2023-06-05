@@ -6,11 +6,11 @@ import Dashboard from "./components/components/Dashboard";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/login",
     element: <FrontPage />,
   },
   {
-    path: "/dashboard",
+    path: "/",
     element: <Dashboard />,
   },
 ]);

@@ -1,15 +1,20 @@
 import React from "react";
 
 const FrontPage = () => {
-  const handleLinkClick = () => {
-    window.location.href = "/square/link_account"; // Replace with your Rails route for OAuth process
+  const handleLogin = async () => {
+    try {
+      const response = await fetch("/auth/developer");
+      const { user_info } = await response.json();
+      console.log(user_info); // Do something with the user info
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
-    <div>
-      <h1>Welcome to the Front Page</h1>
-      <button onClick={handleLinkClick}>Link Square Account</button>
-    </div>
+    <button type="button" onClick={handleLogin}>
+      Login with Developer
+    </button>
   );
 };
 
