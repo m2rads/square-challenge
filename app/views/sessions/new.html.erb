@@ -96,7 +96,7 @@
     <div class="right-half">
     <h1 style="margin-bottom: 2rem"> Welcome to <span style="font-family: 'Cfour', sans-serif;" > Mixed Reality Marketing </span> </h1>
     <h3 style="margin-bottom: 5rem" > Please link your Square account to continue </h3>
-      <%= form_tag('/auth/developer', method: 'post', data: {turbo: false}) do %>
+      <%= form_tag('/auth/square', method: 'post', data: {turbo: false}) do %>
         <div class="square-button"> <button style="style: none;"  type='submit'>Login with Square</button> </div>
       <% end %>
     </div>
