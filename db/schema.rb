@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_072838) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_06_131040) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,8 +44,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_072838) do
     t.string "phone"
     t.string "image_url"
     t.float "diameter"
-    t.float "coordinate_x"
-    t.float "coordinate_y"
+    t.decimal "coordinate_x", precision: 18, scale: 15
+    t.decimal "coordinate_y", precision: 18, scale: 15
     t.bigint "user_id"
     t.index ["user_id"], name: "index_retailers_on_user_id"
   end
