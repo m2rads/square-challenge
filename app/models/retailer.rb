@@ -1,5 +1,5 @@
 class Retailer < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
   has_many :purchases
   has_many :customers, through: :purchases
 
@@ -19,10 +19,10 @@ class Retailer < ApplicationRecord
     owner_name = auth[:info][:name]
     owner_email = raw_info[:merchant][0][:owner_email]
 
-    retailer = create!(
+    retailer = find_or_initialize_by(email: owner_email)
+    retailer.update!(
       business_name: business_name,
       owner: owner_name,
-      email: owner_email,
       user: user
     )
 
