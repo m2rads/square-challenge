@@ -3,3 +3,10 @@
 <%= content_tag :div, id: "book_question", data: retailer.to_json do %>
   This is <%= retailer.owner %>
 <% end %>
+
+<% customers.each do |customer| %>
+  <div>
+    Customer Name: <%= customer.name %>
+    Customer Email: <%= customer.email %>
+  </div>
+<% end %>

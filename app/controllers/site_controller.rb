@@ -1,6 +1,7 @@
 class SiteController < ApplicationController   
   def index
-    @retailer = Retailer.find("980190968")
-    render :index, locals: { retailer: @retailer }
+    @retailer = current_user.retailer
+    @customers = @retailer.customers
+    render :index, locals: { retailer: @retailer, customers: @customers }
   end
 end

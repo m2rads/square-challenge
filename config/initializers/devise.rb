@@ -271,7 +271,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :square, "sandbox-sq0idb-aJUXXWXa7gYuNwj3iP9oTQ", "sandbox-sq0csb-LW8UZbM1acNRXSI8Yo2fl8kfiwZTFr135nmsCg8BSPM", {:scope => "ITEMS_READ,ITEMS_WRITE,MERCHANT_PROFILE_READ,EMPLOYEES_READ", :client_options => {:site => 'https://connect.squareupsandbox.com'}}
+  config.omniauth :square, "sandbox-sq0idb-aJUXXWXa7gYuNwj3iP9oTQ", "sandbox-sq0csb-LW8UZbM1acNRXSI8Yo2fl8kfiwZTFr135nmsCg8BSPM", {:scope => "ITEMS_READ,ITEMS_WRITE,MERCHANT_PROFILE_READ,EMPLOYEES_READ,CUSTOMERS_READ,CUSTOMERS_WRITE", :client_options => {:site => 'https://connect.squareupsandbox.com'}}
   # config.omniauth :square, 'sandbox-sq0idb-aJUXXWXa7gYuNwj3iP9oTQ', 'sandbox-sq0csb-LW8UZbM1acNRXSI8Yo2fl8kfiwZTFr135nmsCg8BSPM', :scope => "ITEMS_READ,ITEMS_WRITE, MERCHANT_PROFILE_READ"
   # config.omniauth :developer
   # ==> Warden configuration

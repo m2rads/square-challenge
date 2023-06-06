@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_061935) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_06_072838) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_061935) do
     t.string "email"
     t.string "phone"
     t.integer "age"
+    t.string "square_customer_id"
+    t.index ["square_customer_id"], name: "index_customers_on_square_customer_id"
   end
 
   create_table "purchases", force: :cascade do |t|
