@@ -1,6 +1,5 @@
-<div id="root">this is the root</div>
+<div>this is the root</div>
 
-<%= content_tag :div, 
-id: "book_question",
-data: @question.to_json do %>
+<%= content_tag :div, id: "book_question", data: retailer.to_json do %>
+  This is <%= retailer.owner %>
 <% end %>
