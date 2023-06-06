@@ -7,9 +7,14 @@ Rails.application.routes.draw do
   # root to: 'site#index'
 
   # get 'auth/:provider/callback', to: 'sessions#create'
+
   root to: 'sessions#new'
   
+
   devise_for :users, controllers: {omniauth_callbacks: "callbacks"}
+
+  get '/dashboard', to: 'site#index', as: 'dashboard'
+
 
 
   # resources :retailers

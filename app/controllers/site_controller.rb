@@ -1,6 +1,5 @@
-class SiteController < ApplicationController
+class SiteController < ApplicationController   
   def index
-    @question = "Let's begin"
-    render :new
+    render :index
   end
 end
