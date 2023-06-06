@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   # get 'site/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -8,9 +7,9 @@ Rails.application.routes.draw do
   # root to: 'site#index'
 
   # get 'auth/:provider/callback', to: 'sessions#create'
-  root to: 'site#index'
+  root to: 'sessions#new'
   
-  devise_for :users, controllers: {omniauth_callbacks: "callback"}
+  devise_for :users, controllers: {omniauth_callbacks: "callbacks"}
 
 
   # resources :retailers
