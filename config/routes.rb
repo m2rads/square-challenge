@@ -17,14 +17,13 @@ Rails.application.routes.draw do
 
   post '/upload_image', to: 'site#upload_image', as: 'upload_image'
 
-
-
-
-  # resources :retailers
+  resources :retailers
   
-  # resources :customers, except: [:new, :edit] do
-  #   get 'associated_retailers', on: :member
-  # end
+  resources :customers do
+    member do
+      get 'associated_retailers', to: 'customers#associated_retailers'
+    end
+  end
 
   # # post '/customers', to: 'customers#create'
 
