@@ -1,12 +1,150 @@
-<div>this is the root</div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Retailer Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#btn-dashboard").click(function() {
+        $("#dashboard-section").show();
+        $("#customers-section").hide();
+        $("#marketing-section").hide();
+      });
 
-<%= content_tag :div, id: "book_question", data: retailer.to_json do %>
-  This is <%= retailer.id %>
-<% end %>
+      $("#btn-customers").click(function() {
+        $("#dashboard-section").hide();
+        $("#customers-section").show();
+        $("#marketing-section").hide();
+      });
 
-<% customers.each do |customer| %>
-  <div>
-    Customer Name: <%= customer.name %>
-    Customer Email: <%= customer.email %>
+      $("#btn-marketing").click(function() {
+        $("#dashboard-section").hide();
+        $("#customers-section").hide();
+        $("#marketing-section").show();
+      });
+
+      $("#image-upload-form").submit(function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+          url: "/upload_image",
+          type: "POST",
+          data: formData,
+          contentType: false,
+          processData: false,
+          success: function(response) {
+            console.log("Image uploaded successfully");
+            $("#upload-message").text("Image uploaded successfully");
+            $("#upload-message").show();
+          },
+          error: function(error) {
+            console.log("Image upload failed");
+            $("#upload-message").text("Image upload failed");
+            $("#upload-message").show();
+          }
+        });
+      });
+    });
+  </script>
+  <style>
+    /* Add your custom CSS styles here */
+    .dashboard-container {
+      display: flex;
+    }
+
+    .dashboard-menu {
+      width: 200px;
+      height: 100vh;
+      background-color: #f1f1f1;
+      padding: 20px;
+    }
+
+    .dashboard-menu-button {
+      display: block;
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #ddd;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .dashboard-menu-button:hover {
+      background-color: #ccc;
+    }
+
+    .dashboard-content {
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    #dashboard-section, #customers-section, #marketing-section {
+      margin-bottom: 20px;
+    }
+
+    #customers-section hr {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .customer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      width: 80%;
+      background: grey;
+    }
+    #upload-message {
+      background: green;
+      color: white;
+      margin-top: 10px;
+      padding: 10px;
+      width: 30%;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <div class="dashboard-menu">
+      <a href="#" class="dashboard-menu-button" id="btn-dashboard">Dashboard</a>
+      <a href="#" class="dashboard-menu-button" id="btn-customers">Customers</a>
+      <a href="#" class="dashboard-menu-button" id="btn-marketing">Marketing</a>
+    </div>
+
+    <div class="dashboard-content">
+      <div id="dashboard-section">
+        <h1>Retailer Information</h1>
+        <p>Business Name: <%= @retailer.business_name %></p>
+        <p>Email: <%= @retailer.email %></p>
+        <p>Owner: <%= @retailer.owner %></p>
+      </div>
+
+      <div id="customers-section" style="display: none;">
+        <h1>Customer List</h1>
+        <div class="customer-list">
+          <% @customers.each do |customer| %>
+            <div class="customer">
+              <p><strong>Name:</strong> <%= customer.name %></p>
+              <p><strong>Last Name:</strong> <%= customer.last_name %></p>
+              <p><strong>Email:</strong> <%= customer.email %></p>
+              <p><strong>Phone:</strong> <%= customer.phone %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div id="marketing-section" style="display: none;">
+        <h1>Marketing</h1>
+        <form id="image-upload-form" enctype="multipart/form-data">
+          <input type="file" name="image" id="image-input">
+          <input type="text" name="diameter" placeholder="Diameter">
+          <input type="text" name="x_coordinate" placeholder="X Coordinate">
+          <input type="text" name="y_coordinate" placeholder="Y Coordinate">
+          <button type="submit">Upload</button>
+        </form>
+        <div id="upload-message" style="display: none;"></div>
+      </div>
+    </div>
   </div>
-<% end %>
+</body>
+</html>

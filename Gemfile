@@ -93,3 +93,5 @@ gem 'omniauth-square-oauth2', '~> 0.2.1'
 gem 'devise'
 
 gem 'rest-client'
+
+gem 'cloudinary'

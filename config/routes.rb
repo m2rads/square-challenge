@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'site#index', as: 'dashboard'
 
+  post '/upload_image', to: 'site#upload_image', as: 'upload_image'
+
+
 
 
   # resources :retailers

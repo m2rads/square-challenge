@@ -37,7 +37,7 @@ class Retailer < ApplicationRecord
       customer = Customer.find_or_initialize_by(square_customer_id: customer_data['id'])
       customer.update!(
         name: customer_data['given_name'],
-        last_name: customer_data['last_name'],
+        last_name: customer_data['family_name'],
         email: customer_data['email_address'],
         phone: customer_data['phone_number']
       )
